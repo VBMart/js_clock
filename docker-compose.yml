@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+  caddy:
+    image: abiosoft/caddy:php
+    environment:
+      - ACME_AGREE=true
+      - CADDYPATH=/etc/caddycerts
+    volumes:
+      - ./docker/caddy/caddyfile:/etc/Caddyfile
+      - ./docker/caddy/sert:/etc/caddycerts
+      - ./docker/caddy/logs:/var/logs/
+      - ./www:/srv
+    ports:
+      - 80:80
+      - 443:443
